@@ -11,12 +11,6 @@
     <h1>Test Cases</h1>
   <#list data as testcase>
   <h2><span class="badge badge-primary">${testcase.id}</span> ${testcase.name}</h2>
-  <dl>
-    <dt>Features</dt>
-    <dd>${testcase.features?join(", ")}</dd>
-    <dt>Stories</dt>
-    <dd>${testcase.stories?join(", ")}</dd>
-  </dl>
   <h3>Scenario</h3>
   <ol>
   <#list testcase.steps as step>

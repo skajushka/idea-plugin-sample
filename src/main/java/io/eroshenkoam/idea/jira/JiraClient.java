@@ -11,16 +11,15 @@ import retrofit2.http.Query;
  */
 public interface JiraClient {
 
-    @GET("api/2/myself")
+    @GET("rest/api/2/myself")
     JiraUser getUser();
 
-    @GET("api/2/search")
+    @GET("rest/api/2/search")
     JiraFilter findIssue(@Query(value = "jql", encoded = true) String jql);
 
-    @GET("api/2/issue/{key}")
+    @GET("rest/api/2/issue/{key}")
     JiraIssue getIssue(@Path("key") String key);
 
-    @POST("api/2/issue")
+    @POST("rest/api/2/issue")
     JiraIssue createIssue(@Body JiraIssue issue);
-
 }

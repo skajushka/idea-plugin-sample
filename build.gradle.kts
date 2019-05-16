@@ -21,6 +21,7 @@ tasks.existing(Wrapper::class) {
 plugins {
     id("java")
     id("org.jetbrains.intellij") version ("0.3.7")
+    id("maven-publish")
 }
 
 tasks.withType(type = JavaCompile::class) {
@@ -46,9 +47,20 @@ dependencies {
 }
 
 configure<IntelliJPluginExtension> {
-    version = "2018.2.5"
+    version = "2018.3.2"
 }
 
 tasks.withType(PatchPluginXmlTask::class) {
     changeNotes("Add change notes here.<br><em>most HTML tags may be used</em>")
+}
+
+val fatJar = task("fatJar", type = Jar::class) {
+    from(configurations.compile.map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks["jar"] as CopySpec)
+}
+
+tasks {
+    "buildPlugin" {
+        dependsOn(fatJar)
+    }
 }

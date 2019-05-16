@@ -82,9 +82,9 @@ public class JiraLabelsImportAction extends AnAction {
 
     private JiraClient createJiraClient() {
         return new JiraClientBuilder()
-                .endpoint("http://localhost:2990/jira/rest/")
-                .username("admin")
-                .password("admin")
+                .endpoint("http://localhost:8080/")
+                .username("hlinistaja")
+                .password("qulix123")
                 .build();
     }
 

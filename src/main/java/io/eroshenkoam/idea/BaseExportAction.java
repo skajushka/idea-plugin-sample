@@ -53,8 +53,8 @@ public abstract class BaseExportAction extends AnAction {
         final TestCase testCase = new TestCase();
         getId(method).ifPresent(testCase::setId);
         testCase.setName(getName(method));
-        testCase.setFeatures(getValues(method, ALLURE2_FEATURES_ANNOTATION));
-        testCase.setStories(getValues(method, ALLURE2_STORIES_ANNOTATION));
+        //testCase.setFeatures(getValues(method, ALLURE2_FEATURES_ANNOTATION));
+        //testCase.setStories(getValues(method, ALLURE2_STORIES_ANNOTATION));
         testCase.setSteps(getSteps(method));
         return testCase;
     }
